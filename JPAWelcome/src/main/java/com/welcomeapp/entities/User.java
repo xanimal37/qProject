@@ -20,6 +20,7 @@ public class User {
 	private String username;
 	private String password;
 	private boolean enabled;
+	private String role;
 	@CreationTimestamp
 	private LocalDateTime created;
 	@UpdateTimestamp
@@ -29,6 +30,14 @@ public class User {
 	public User() {}
 	
 	//getters and setters
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 	public int getId() {
 		return id;
 	}
