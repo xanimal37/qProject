@@ -21,6 +21,7 @@ public class User {
 	private String password;
 	private boolean enabled;
 	private String role;
+	private String email;
 	@CreationTimestamp
 	private LocalDateTime created;
 	@UpdateTimestamp
@@ -30,6 +31,14 @@ public class User {
 	public User() {}
 	
 	//getters and setters
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getRole() {
 		return role;
 	}

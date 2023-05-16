@@ -27,16 +27,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` VARCHAR(80) NOT NULL,
   `created` DATETIME NULL,
   `updated` DATETIME NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `role` VARCHAR(45) NOT NULL DEFAULT 'standard',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
-DROP USER IF EXISTS queer1;
+DROP USER IF EXISTS queer1@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-CREATE USER 'queer1' IDENTIFIED BY 'qweerty';
+CREATE USER 'queer1'@'localhost' IDENTIFIED BY 'qweerty';
 
-GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'queer1';
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'queer1'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -47,7 +49,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `welcomedb`;
-INSERT INTO `user` (`id`, `username`, `enabled`, `password`, `created`, `updated`) VALUES (1, 'admin', 1, 'test', NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `enabled`, `password`, `created`, `updated`, `email`, `role`) VALUES (1, 'admin', 1, '$2a$10$nShOi5/f0bKNvHB8x0u3qOpeivazbuN0NE4TO0LGvQiTMafaBxLJS', NULL, NULL, 'admin@welcome.com', 'ADMIN');
 
 COMMIT;
 
